@@ -1,16 +1,18 @@
+{
 // Variables
 let name = "Faith";
-let yearold = 20;
+let age = 20;
 let isStudent = true;
 let favoriteColors = ["blue", "black"];
 let today = new Date();
 
 console.log("Name:", name);
-console.log("yearold:", age);
+console.log("age:", age);
 console.log("Student:", isStudent);
 console.log("Colors:", favoriteColors);
 console.log("Today:", today);
-
+}
+{
 // ===== Task 7.2: Data Types & Operators =====
 
 // ---- Exercise 1: Number Operations ----
@@ -70,7 +72,8 @@ let yearTurn100 = currentYear + (100 - age);
 console.log("Age in days (approx.):", ageInDays);
 console.log("Age in hours (approx.):", ageInHours);
 console.log("Year you'll turn 100:", yearTurn100);
-
+}
+{
 // ===== Task 7.3: Functions =====
 
 // ---- Exercise 1: Function Declarations ----
@@ -129,7 +132,8 @@ function calculateTip(bill, tipPercent = 15) {
 // ---- Test Tip Calculator ----
 console.log("Tip for 100:", calculateTip(100));         // 15
 console.log("Tip for 200 at 10%:", calculateTip(200, 10)); // 20
-
+}
+{
 // ===== Task 7.4: Control Flow =====
 
 // ---- Exercise 1: If/Else Statements ----
@@ -210,8 +214,9 @@ for (let i = 1; i <= rows; i++) {
 // ===== Mini-Project: Calculator =====
 
 // Basic operations
-function addNumbers(a, b) {
+function add(a, b) {
     return a + b;
+
 }
 
 function subtract(a, b) {
@@ -259,7 +264,8 @@ console.log(calculate(10, "/", 0));   // Error message
 console.log(calculate(10, "%", 3));   // 1
 console.log(calculate(2, "**", 3));   // 8
 console.log(calculate(10, "^", 2));   // Invalid operator
-
+}
+{
 // ===== Task 8.1: Arrays =====
 
 // ---- Exercise 1: Array Basics ----
@@ -322,7 +328,8 @@ console.log("First number > 10:", firstOver10);
 // 4. Product of all numbers
 const product = mixedNumbers.reduce((total, num) => total * num, 1);
 console.log("Product of all numbers:", product);
-
+}
+{
 // ===== Task 8.2: Objects =====
 
 // ---- Exercise 1: Object Basics ----
@@ -383,7 +390,8 @@ console.log("Entries:", Object.entries(scores));
 for (const [subject, score] of Object.entries(scores)) {
     console.log(`${subject}: ${score}`);
 }
-
+}
+{
 // ===== Task 8.3: Array of Objects / Student Data =====
 
 const students = [
@@ -515,3 +523,4 @@ console.log("Math Class Average:", gradeTracker.getSubjectAverage("math")); // 7
 console.log("Top Student:", gradeTracker.getTopStudent());                 // Alice
 console.log("Struggling Students:", gradeTracker.getStrugglingStudents()); // [Charlie]
 console.log("\n" + gradeTracker.generateReportCard("Alice"));
+}
