@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Grade Tracker</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #BCB6FF ;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: #FCD7AD  ;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    cursor: pointer;
+    background: #007bff;
+    color: #fff;
+    border: none;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.output {
+    margin-top: 20px;
+    padding: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    min-height: 50px;
+    white-space: pre-wrap;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Student Grade Tracker</h2>
+
+    <input type="text" id="studentName" placeholder="Student Name">
+    <input type="text" id="mathGrade" placeholder="Math Grade">
+    <input type="text" id="englishGrade" placeholder="English Grade">
+    <input type="text" id="scienceGrade" placeholder="Science Grade">
+    <button onclick="addStudent()">Add Student</button>
+
+    <button onclick="showTopStudent()">Top Student</button>
+    <button onclick="showStruggling()">Struggling Students</button>
+    <input type="text" id="reportName" placeholder="Student Name for Report">
+    <button onclick="showReportCard()">Generate Report Card</button>
+
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+
+const gradeTracker = {
+    students: [],
+
+    addStudent(name, grades) {
+        this.students.push({ name, grades });
+        return `${name} added.`;
+    },
+
+    getStudent(name) {
+        return this.students.find(s => s.name.toLowerCase() === name.toLowerCase()) || null;
+    },
+
+    getStudentAverage(name) {
+        const student = this.getStudent(name);
+        if (!student) return null;
+        const values = Object.values(student.grades);
+        const sum = values.reduce((a,b)=>a+b,0);
+        return (sum / values.length).toFixed(2);
+    },
+
+    getSubjectAverage(subject) {
+        const validStudents = this.students.filter(s => s.grades[subject] !== undefined);
+        if (validStudents.length === 0) return null;
+        const sum = validStudents.reduce((a,s)=>a+s.grades[subject],0);
+        return (sum / validStudents.length).toFixed(2);
+    },
+
+    getTopStudent() {
+        if (this.students.length === 0) return null;
+        let top = this.students[0];
+        let topAvg = parseFloat(this.getStudentAverage(top.name));
+        this.students.forEach(s => {
+            const avg = parseFloat(this.getStudentAverage(s.name));
+            if (avg > topAvg) {
+                top = s;
+                topAvg = avg;
+            }
+        });
+        return top.name;
+    },
+
+    getStrugglingStudents() {
+        return this.students.filter(s => parseFloat(this.getStudentAverage(s.name)) < 70).map(s=>s.name);
+    },
+
+    getLetterGrade(score) {
+        if (score >= 90) return 'A';
+        if (score >= 80) return 'B';
+        if (score >= 70) return 'C';
+        if (score >= 60) return 'D';
+        return 'F';
+    },
+
+    generateReportCard(name) {
+        const student = this.getStudent(name);
+        if (!student) return 'Student not found';
+        let report = `Report Card for ${student.name}\n`;
+        for (const [subject, grade] of Object.entries(student.grades)) {
+            report += `${subject}: ${grade} (${this.getLetterGrade(grade)})\n`;
+        }
+        report += `Average: ${this.getStudentAverage(name)}\n`;
+        return report;
+    }
+};
+
+// UI Functions
+function addStudent() {
+    const name = document.getElementById('studentName').value;
+    const math = parseFloat(document.getElementById('mathGrade').value);
+    const english = parseFloat(document.getElementById('englishGrade').value);
+    const science = parseFloat(document.getElementById('scienceGrade').value);
+    if (!name || isNaN(math) || isNaN(english) || isNaN(science)) {
+        document.getElementById('output').textContent = 'Please enter valid data';
+        return;
+    }
+    gradeTracker.addStudent(name, { math, english, science });
+    document.getElementById('output').textContent = `${name} added successfully!`;
+    document.getElementById('studentName').value = '';
+    document.getElementById('mathGrade').value = '';
+    document.getElementById('englishGrade').value = '';
+    document.getElementById('scienceGrade').value = '';
+}
+
+function showTopStudent() {
+    const top = gradeTracker.getTopStudent();
+    document.getElementById('output').textContent = top ? `Top Student: ${top}` : 'No students yet';
+}
+
+function showStruggling() {
+    const struggling = gradeTracker.getStrugglingStudents();
+    document.getElementById('output').textContent = struggling.length > 0 ? 
+        `Struggling Students: ${struggling.join(', ')}` : 'No struggling students';
+}
+
+function showReportCard() {
+    const name = document.getElementById('reportName').value;
+    const report = gradeTracker.generateReportCard(name);
+    document.getElementById('output').textContent = report;
+}
+</script>
+</body>
+</html>
