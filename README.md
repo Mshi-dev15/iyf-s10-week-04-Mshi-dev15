@@ -10,7 +10,7 @@ This project covers the Week 4 JavaScript fundamentals exercises from IYF Weeken
 
 ## 🚀Live Demo
 - [Interactive Calculator](https://Mshi-dev15.github.io/iys-s10-week-04-Mshi-dev15/Interactive-Calculator.html)
-- [Student Grade Tracker](https://Mshi-dev15.github.io/iys-s10-week-04-Mshi-dev15/Student-Grader-Tracker.html)
+- [Student Grade Tracker](https://Mshi-dev15.github.io/iys-s10-week-04-Mshi-dev15/Student-Grade-Tracker.html)
 
 ## Technologies Used
 - HTML5
