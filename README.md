@@ -19,9 +19,9 @@ This project covers the Week 4 JavaScript fundamentals exercises from IYF Weeken
 
 ## 🌐 Live Demos
 
-[![Interactive Calculator](https://img.shields.io/badge/🧮%20Interactive%20Calculator-F7DF1E?style=for-the-badge&logoColor=black)](https://Mshi-dev15.github.io/iys-s10-week-04-Mshi-dev15/Interactive-Calculator.html)
+[![Interactive Calculator](https://img.shields.io/badge/🧮%20Interactive%20Calculator-F7DF1E?style=for-the-badge&logoColor=black)](https://Mshi-dev15.github.io/iyf-s10-week-04-Mshi-dev15/Interactive-Calculator.html)
 <br><br>
-[![Student Grade Tracker](https://img.shields.io/badge/📊%20Student%20Grade%20Tracker-4CAF50?style=for-the-badge&logoColor=white)](https://Mshi-dev15.github.io/iys-s10-week-04-Mshi-dev15/Student-Grade-Tracker.html)
+[![Student Grade Tracker](https://img.shields.io/badge/📊%20Student%20Grade%20Tracker-4CAF50?style=for-the-badge&logoColor=white)](https://Mshi-dev15.github.io/iyf-s10-week-04-Mshi-dev15/Student-Grade-Tracker.html)
 
 ---
 
